@@ -12,9 +12,9 @@ namespace ThreeMG.Helper.ObjectPooling
         public int maxSize = int.MaxValue;      // Default with no max size limit
     }
 
-        public interface IPoolable
+    public interface IPoolable
     {
-        string PoolTag{ get; set; }
+        string PoolTag { get; set; }
 
         void ReturnToPool();                    //The poolElement should implement IPoolable and call Objpooler.ReturnToPool()
     }

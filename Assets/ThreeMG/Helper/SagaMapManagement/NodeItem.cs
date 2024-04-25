@@ -11,9 +11,12 @@ namespace ThreeMG.Helper.SagaMapManagement
         public int nodeIndex { get; set; }
         public string levelName { get; set; }
 
-        public GameObject nodePrefab;
-
         void Start()
+        {
+            Init();
+        }
+
+        public void Init()
         {
             UpdateLevelType();
             UpdateNodeState();
@@ -29,6 +32,11 @@ namespace ThreeMG.Helper.SagaMapManagement
         {
             //Change the lock status here
             nodeState = NodeState.UNLOCKED;
+        }
+
+        public void NodeClicked()
+        {
+            
         }
     }
 }

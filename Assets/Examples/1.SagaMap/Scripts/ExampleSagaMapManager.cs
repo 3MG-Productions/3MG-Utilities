@@ -7,13 +7,14 @@ using System.Linq;
 
 public class ExampleSagaMapManager : BaseSagaMap
 {
-    [field: SerializeField] public SpriteDatabase SpriteDatabase { get; private set; }
-    public static ExampleSagaMapManager Instance { get; private set; }
-    public bool NonDestroyable = true;
-
-    public LevelData levelData;
+    // [field: SerializeField] public SpriteDatabase SpriteDatabase { get; private set; }
     private List<LevelType> levelTypes = new List<LevelType>();
     private LevelType[] levelArray = new LevelType[5];
+
+    public static ExampleSagaMapManager Instance { get; private set; }
+    public bool NonDestroyable = true;
+    public LevelData levelData;
+
 
     private bool canTween = false;
 
@@ -47,19 +48,17 @@ public class ExampleSagaMapManager : BaseSagaMap
     {
         GetLevelTypesFromLevelData();
         GenerateSagaMap(levelArray);
+
+        UpdateCurrentNode();
     }
 
     private void GetLevelTypesFromLevelData()
     {
         for (int i = 0; i < nodesInView; i++)
         {
-            // levelTypes.Add(levelType.levelType);
             levelArray[i] = levelData.levels[i].levelType;
         }
     }
-
-    Vector3 nextPos;
-    Vector3 pos;
 
     public override void AnimateNodeProgression()
     {
@@ -67,6 +66,8 @@ public class ExampleSagaMapManager : BaseSagaMap
         StartCoroutine(AnimateWithDelay(1.5f));
     }
 
+    Vector3 nextPos;
+    Vector3 pos;
     private IEnumerator AnimateWithDelay(float deltaTime = 0f)
     {
         yield return new WaitForSeconds(deltaTime);
@@ -96,20 +97,11 @@ public class ExampleSagaMapManager : BaseSagaMap
             {
                 canTween = false;
                 timeElapsed = 0f;
+                UpdateCurrentNode();
 
                 // Instatiate nextNode
             }
         }
-    }
-
-    public void InitNodeClass()
-    {
-
-    }
-
-    private void OnDisable()
-    {
-
     }
 }
 

@@ -18,8 +18,8 @@ namespace ThreeMG.Helper.SagaMapManagement
     public enum NodeState
     {
         CURRENT,
-        LOCKED,
-        UNLOCKED
+        COMPLETED,
+        LOCKED
     }
 
     public enum LevelType

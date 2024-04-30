@@ -464,19 +464,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84cc1c9393eb9f438db6c7f75b32367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodeClasses:
-  - <levelType>k__BackingField: 0
-    <levelSprite>k__BackingField: {fileID: 21300000, guid: 615b0f8ca6dc01e4880905bd378f210b, type: 3}
-  - <levelType>k__BackingField: 1
-    <levelSprite>k__BackingField: {fileID: 21300000, guid: 3455a2f25383b1b4a87108400f6e4d96, type: 3}
-  - <levelType>k__BackingField: 2
-    <levelSprite>k__BackingField: {fileID: 21300000, guid: cebf12af53f85594f915602644b8aac7, type: 3}
-  currentNodeIndex: 0
-  nodesInView: 5
   nodeParent: {fileID: 242582218}
+  currentNodeIndex: 0
   nodes: []
   nodePrefab: {fileID: 6526312446202654929, guid: 829e783c2dfa0d74b97760478e41149d, type: 3}
   startIndex: 0
+  nodesInView: 5
   <SpriteDatabase>k__BackingField: {fileID: 11400000, guid: 981a0dc90a713ee4297a20d4d1305fa8, type: 2}
   NonDestroyable: 1
   levelData: {fileID: 11400000, guid: 4a28382a6ead36642a2b9d0e23431eba, type: 2}

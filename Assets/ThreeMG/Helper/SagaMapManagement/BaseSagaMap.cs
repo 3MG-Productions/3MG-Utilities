@@ -5,14 +5,16 @@ using UnityEngine;
 
 public abstract class BaseSagaMap : MonoBehaviour
 {
-    public List<NodeClass> nodeClasses = new List<NodeClass>();
-    public int currentNodeIndex = 0;
-    [field: SerializeField] protected int nodesInView = 4;
-    [SerializeField] protected Transform nodeParent;
     private bool isProcedurallyGenerated = true;
+    [SerializeField] protected Transform nodeParent;
+
+    public int currentNodeIndex = 0;
     public List<NodeItem> nodes = new List<NodeItem>();
     public GameObject nodePrefab;
-    public int startIndex  = 0;
+    public int startIndex = 0;
+
+    [field: SerializeField] protected int nodesInView = 4;
+    [field: SerializeField] public SpriteDatabase SpriteDatabase { get; private set; }
 
 
     private void Start()
@@ -62,6 +64,11 @@ public abstract class BaseSagaMap : MonoBehaviour
         startIndex++;
 
         nodes.Add(nodeData);
+    }
+
+    public void UpdateCurrentNode()
+    {
+        nodes[currentNodeIndex].UpdateNodeState(NodeState.CURRENT);
     }
 
     public virtual void StartLevelGameplay()

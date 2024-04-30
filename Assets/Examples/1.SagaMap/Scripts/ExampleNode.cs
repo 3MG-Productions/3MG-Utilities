@@ -26,11 +26,11 @@ public class ExampleNode : NodeItem
 
     private Sprite GetSprite(LevelType levelType)
     {
-        foreach (NodeClass nodeClass in ExampleSagaMapManager.Instance.nodeClasses)
+        foreach (SpriteMap spriteMap in ExampleSagaMapManager.Instance.SpriteDatabase.SpriteMaps)
         {
-            if (nodeClass.levelType == levelType)
+            if (spriteMap.LevelType == levelType)
             {
-                return nodeClass.levelSprite;
+                return spriteMap.sprites[2];
             }
         }
 
@@ -39,7 +39,7 @@ public class ExampleNode : NodeItem
 
     private void OnButtonClick()
     {
-        ExampleSagaMapManager.Instance.UpdateNode(NodeState.CURRENT);
+        ExampleSagaMapManager.Instance.UpdateNode(NodeState.COMPLETED);
         ExampleSagaMapManager.Instance.AnimateNodeProgression();
     }
 

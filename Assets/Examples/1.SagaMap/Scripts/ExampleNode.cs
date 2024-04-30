@@ -1,11 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using Microsoft.Unity.VisualStudio.Editor;
 using ThreeMG.Helper.SagaMapManagement;
 using TMPro;
 using UnityEngine;
 
-public class NodeData : NodeItem
+public class ExampleNode : NodeItem
 {
     public TextMeshProUGUI levelID;
     public UnityEngine.UI.Image nodeIcon;
@@ -27,7 +26,7 @@ public class NodeData : NodeItem
 
     private Sprite GetSprite(LevelType levelType)
     {
-        foreach (NodeClass nodeClass in SagaMapManager.Instance.nodeClasses)
+        foreach (NodeClass nodeClass in ExampleSagaMapManager.Instance.nodeClasses)
         {
             if (nodeClass.levelType == levelType)
             {
@@ -40,7 +39,19 @@ public class NodeData : NodeItem
 
     private void OnButtonClick()
     {
-        SagaMapManager.Instance.UpdateNode(NodeState.UNLOCKED);
-        SagaMapManager.Instance.AnimateNodeProgression();
+        ExampleSagaMapManager.Instance.UpdateNode(NodeState.CURRENT);
+        ExampleSagaMapManager.Instance.AnimateNodeProgression();
+    }
+
+    public override void UpdateLevelType(LevelType levelType)
+    {
+        base.UpdateLevelType(levelType);
+    }
+
+    public override void UpdateNodeState(NodeState nodeState)
+    {
+        base.UpdateNodeState(nodeState);
+
+        nodeIcon.sprite = ExampleSagaMapManager.Instance.SpriteDatabase.GetSpriteByConfig(levelType, nodeState);
     }
 }

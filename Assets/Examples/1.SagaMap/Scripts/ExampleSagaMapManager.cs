@@ -5,14 +5,17 @@ using UnityEngine;
 using ThreeMG.Helper.SagaMapManagement;
 using System.Linq;
 
-public class SagaMapManager : SagaMap
+public class ExampleSagaMapManager : BaseSagaMap
 {
-    public static SagaMapManager Instance { get; private set; }
+    [field: SerializeField] public SpriteDatabase SpriteDatabase { get; private set; }
+    public static ExampleSagaMapManager Instance { get; private set; }
     public bool NonDestroyable = true;
 
     public LevelData levelData;
     private List<LevelType> levelTypes = new List<LevelType>();
     private LevelType[] levelArray = new LevelType[5];
+
+    private bool canTween = false;
 
     private void Awake()
     {
@@ -55,13 +58,48 @@ public class SagaMapManager : SagaMap
         }
     }
 
+    Vector3 nextPos;
+    Vector3 pos;
+
     public override void AnimateNodeProgression()
     {
         base.AnimateNodeProgression();
-        Vector3 nextPos = nodeParent.transform.position;
-        nextPos.y += 450f;
+        StartCoroutine(AnimateWithDelay(1.5f));
+    }
+
+    private IEnumerator AnimateWithDelay(float deltaTime = 0f)
+    {
+        yield return new WaitForSeconds(deltaTime);
+
+        nextPos = nodeParent.transform.position;
+        pos = nodeParent.transform.position;
+        nextPos.y -= 30f;
 
         //Tween To next pos
+        canTween = true;
+    }
+
+    float timeElapsed;
+    float lerpDuration = 1;
+    private void Update()
+    {
+        if (canTween)
+        {
+            if (timeElapsed < lerpDuration)
+            {
+                pos = Vector3.Lerp(pos, nextPos, timeElapsed / lerpDuration);
+                timeElapsed += Time.deltaTime;
+
+                nodeParent.transform.position = pos;
+            }
+            else
+            {
+                canTween = false;
+                timeElapsed = 0f;
+
+                // Instatiate nextNode
+            }
+        }
     }
 
     public void InitNodeClass()

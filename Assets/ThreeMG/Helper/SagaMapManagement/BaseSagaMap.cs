@@ -1,31 +1,18 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using ThreeMG.Helper.SagaMapManagement;
 using UnityEngine;
 
-[Serializable]
-public class NodeClass
-{
-    [field: SerializeField] public LevelType levelType { get; set; }
-    [field: SerializeField] public Sprite levelSprite { get; set; }
-
-    public NodeClass(LevelType levelType, Sprite levelSprite)
-    {
-        this.levelType = levelType;
-        this.levelSprite = levelSprite;
-    }
-}
-
-public abstract class SagaMap : MonoBehaviour
+public abstract class BaseSagaMap : MonoBehaviour
 {
     public List<NodeClass> nodeClasses = new List<NodeClass>();
-    private int currentNodeIndex = 0;
+    public int currentNodeIndex = 0;
     [field: SerializeField] protected int nodesInView = 4;
     [SerializeField] protected Transform nodeParent;
     private bool isProcedurallyGenerated = true;
     public List<NodeItem> nodes = new List<NodeItem>();
     public GameObject nodePrefab;
+    public int startIndex  = 0;
 
 
     private void Start()
@@ -67,12 +54,12 @@ public abstract class SagaMap : MonoBehaviour
     public void InstantiateNewNodes(LevelType levelType)
     {
         GameObject newNode = Instantiate(nodePrefab, nodeParent);
-        NodeData nodeData = newNode.GetComponent<NodeData>();
+        ExampleNode nodeData = newNode.GetComponent<ExampleNode>();
 
         nodeData.UpdateLevelType(levelType);
 
-        nodeData.nodeIndex = currentNodeIndex;
-        currentNodeIndex++;
+        nodeData.nodeIndex = startIndex;
+        startIndex++;
 
         nodes.Add(nodeData);
     }

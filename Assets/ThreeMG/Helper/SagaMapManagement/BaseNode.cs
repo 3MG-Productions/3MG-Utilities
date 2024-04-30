@@ -21,7 +21,7 @@ namespace ThreeMG.Helper.SagaMapManagement
             UpdateNodeState(this.nodeState);
         }
 
-        public void UpdateLevelType(LevelType levelType)
+        public virtual void UpdateLevelType(LevelType levelType)
         {
             // Update the Leveltype here
             // This should only be called once.
@@ -31,7 +31,7 @@ namespace ThreeMG.Helper.SagaMapManagement
 
 
 
-        public void UpdateNodeState(NodeState nodeState)
+        public virtual void UpdateNodeState(NodeState nodeState)
         {
             //Change the lock status here
             this.nodeState = nodeState;

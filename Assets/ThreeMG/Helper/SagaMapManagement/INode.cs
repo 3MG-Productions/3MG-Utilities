@@ -11,12 +11,13 @@ namespace ThreeMG.Helper.SagaMapManagement
         NodeState nodeState { get; set; }
         LevelType levelType { get; set; }
 
-        public void UpdateNodeState();
-        public void UpdateLevelType();
+        public void UpdateNodeState(NodeState nodeState);
+        public void UpdateLevelType(LevelType levelType);
     }
 
     public enum NodeState
     {
+        CURRENT,
         LOCKED,
         UNLOCKED
     }

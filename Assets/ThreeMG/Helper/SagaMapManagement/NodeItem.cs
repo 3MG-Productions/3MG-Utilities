@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ThreeMG.Helper.SagaMapManagement
 {
-    public class NodeItem : MonoBehaviour, INode
+    public abstract class NodeItem : MonoBehaviour, INode
     {
         public NodeState nodeState { get; set; }
         public LevelType levelType { get; set; }
@@ -18,20 +18,23 @@ namespace ThreeMG.Helper.SagaMapManagement
 
         public void Init()
         {
-            UpdateLevelType();
-            UpdateNodeState();
+            UpdateNodeState(this.nodeState);
         }
 
-        public void UpdateLevelType()
+        public void UpdateLevelType(LevelType levelType)
         {
             // Update the Leveltype here
             // This should only be called once.
+
+            this.levelType = levelType;
         }
 
-        public void UpdateNodeState()
+
+
+        public void UpdateNodeState(NodeState nodeState)
         {
             //Change the lock status here
-            nodeState = NodeState.UNLOCKED;
+            this.nodeState = nodeState;
         }
 
         public void NodeClicked()

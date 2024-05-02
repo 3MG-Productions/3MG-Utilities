@@ -17,6 +17,8 @@ public class ExampleNode : NodeItem
 
         levelID.text = nodeIndex.ToString();
         UpdateSprite();
+
+        ExampleSagaMapManager.Instance.UpdateCurrentNode();
     }
 
     private void UpdateSprite()
@@ -53,5 +55,6 @@ public class ExampleNode : NodeItem
         base.UpdateNodeState(nodeState);
 
         nodeIcon.sprite = ExampleSagaMapManager.Instance.SpriteDatabase.GetSpriteByConfig(levelType, nodeState);
+        nodeButton.interactable = true;
     }
 }

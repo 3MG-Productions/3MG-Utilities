@@ -48,8 +48,6 @@ public class ExampleSagaMapManager : BaseSagaMap
     {
         GetLevelTypesFromLevelData();
         GenerateSagaMap(levelArray);
-
-        UpdateCurrentNode();
     }
 
     private void GetLevelTypesFromLevelData()

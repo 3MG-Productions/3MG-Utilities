@@ -68,6 +68,8 @@ namespace ThreeMG.Helper.AudioManagement
             instance.clip = config.Source.clip;
             instance.pitch = config.Source.pitch;
             instance.volume = config.Source.volume;
+            
+            instance.outputAudioMixerGroup = config.Source.outputAudioMixerGroup;
             return instance;
         }
 

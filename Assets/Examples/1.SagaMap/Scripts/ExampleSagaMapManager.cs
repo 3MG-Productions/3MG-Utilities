@@ -13,7 +13,7 @@ public class ExampleSagaMapManager : BaseSagaMap
 
     public static ExampleSagaMapManager Instance { get; private set; }
     public bool NonDestroyable = true;
-    public LevelData levelData;
+    public ExampleLevelData levelData;
 
 
     private bool canTween = false;

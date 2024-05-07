@@ -5,7 +5,7 @@ using ThreeMG.Helper.SagaMapManagement;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "LevelData", menuName = "SagaMap/LevelData", order = 0)]
-public class LevelData : ScriptableObject
+public class ExampleLevelData : ScriptableObject
 {
     public List<LevelInfo> levels = new List<LevelInfo>();
 }

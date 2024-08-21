@@ -4,7 +4,7 @@ using ThreeMG.Helper.SagaMapManagement;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "SpriteMap", menuName = "SagaMap/SpriteMap", order = 0)]
+[CreateAssetMenu(fileName = "SpriteMap", menuName = "3MG/SagaMap/SpriteMap", order = 0)]
 public class SpriteDatabase : ScriptableObject
 {
     public List<SpriteMap> SpriteMaps = new List<SpriteMap>();
@@ -13,7 +13,7 @@ public class SpriteDatabase : ScriptableObject
     {
         SpriteMap map = SpriteMaps.FirstOrDefault(x => x.LevelType == levelType);
 
-        if(map != null)
+        if (map != null)
         {
             return map.sprites[(int)nodeState];
         }
